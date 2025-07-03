@@ -146,7 +146,7 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 35%;
+            left: 50%;
             width: 3px;
             height: 100%;
             background: linear-gradient(to bottom, 
@@ -166,10 +166,6 @@
             margin: 3rem 0;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
-            display: grid;
-            grid-template-columns: 35% 65%;
-            gap: 2rem;
-            align-items: start;
         }
 
         .timeline-item:nth-child(1) { animation-delay: 0.1s; }
@@ -183,7 +179,7 @@
             content: '';
             position: absolute;
             top: 1.5rem;
-            left: 35%;
+            left: 50%;
             width: 1rem;
             height: 1rem;
             background: var(--surface-primary);
@@ -195,7 +191,7 @@
         }
 
         .timeline-content {
-            width: 100%;
+            width: 48%;
             padding: 2rem;
             background: var(--surface-primary);
             border-radius: var(--radius-xl);
@@ -210,21 +206,31 @@
             box-shadow: var(--shadow-xl);
         }
 
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 52%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+        }
+
         .timeline-content::before {
             content: '';
             position: absolute;
             top: 2rem;
-            right: -0.75rem;
             width: 0;
             height: 0;
             border: 0.75rem solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -1.5rem;
             border-left-color: var(--surface-primary);
         }
 
-        .adoption-cycles {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -1.5rem;
+            border-right-color: var(--surface-primary);
         }
 
         .release-0 { border-left: 4px solid var(--accent-blue); }
@@ -271,8 +277,12 @@
             margin-top: 1.5rem;
         }
 
-        .deliverables-container.five-items {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        .deliverables-container.five-columns {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .deliverables-container.five-columns .deliverable-category:last-child {
+            grid-column: 1 / -1;
         }
 
         .deliverable-category {
@@ -445,8 +455,7 @@
         }
 
         @media (max-width: 1200px) {
-            .deliverables-container,
-            .deliverables-container.five-items {
+            .deliverables-container {
                 grid-template-columns: 1fr;
             }
         }
@@ -474,19 +483,9 @@
                 padding: 3rem 1rem;
             }
 
-            .timeline-item {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
             .timeline-content {
                 width: calc(100% - 4rem);
-                margin-left: 4rem;
-            }
-
-            .adoption-cycles {
-                margin-left: 4rem;
-                width: calc(100% - 4rem);
+                margin-left: 4rem !important;
             }
 
             .timeline-item::before {
@@ -495,9 +494,9 @@
             }
 
             .timeline-content::before {
-                left: -0.75rem;
-                border-right-color: var(--surface-primary);
-                border-left-color: transparent;
+                left: -1.5rem !important;
+                border-right-color: var(--surface-primary) !important;
+                border-left-color: transparent !important;
             }
 
             .adoption-details {
@@ -553,7 +552,7 @@
                     <p class="timeline-date" data-pt="10 a 31 de maio de 2025" data-en="May 10-31, 2025">10 a 31 de maio de 2025</p>
                     <p class="timeline-description" data-pt="Sprint único de três semanas reúne todo o time do programa com foco exclusivamente fundacional. Estabelece as bases técnicas e estratégicas para toda a implementação." data-en="Single three-week sprint brings together the entire program team with exclusively foundational focus. Establishes technical and strategic foundations for the entire implementation.">Sprint único de três semanas reúne todo o time do programa com foco exclusivamente fundacional. Estabelece as bases técnicas e estratégicas para toda a implementação.</p>
                     
-                    <div class="deliverables-container five-items">
+                    <div class="deliverables-container five-columns">
                         <div class="deliverable-category technical">
                             <h4><span>🔧</span><span data-pt="Produto & Arquitetura" data-en="Product & Architecture">Produto & Arquitetura</span></h4>
                             <ul>
@@ -563,36 +562,6 @@
                                 <li data-pt="Requisitos de segurança e compliance" data-en="Security and compliance requirements">Requisitos de segurança e compliance</li>
                                 <li data-pt="Padrões de interoperabilidade definidos" data-en="Interoperability standards defined">Padrões de interoperabilidade definidos</li>
                             </ul>
-                        </div>
-                        
-                        <div class="deliverable-category governance">
-                            <h4><span>👥</span><span data-pt="Governança & Pessoas" data-en="Governance & People">Governança & Pessoas</span></h4>
-                            <ul>
-                                <li data-pt="Estrutura do Núcleo de Gestão estabelecida" data-en="Management Core structure established">Estrutura do Núcleo de Gestão estabelecida</li>
-                                <li data-pt="Pods Scrum organizados e operacionais" data-en="Scrum Pods organized and operational">Pods Scrum organizados e operacionais</li>
-                                <li data-pt="Personas rurais mapeadas e validadas" data-en="Rural personas mapped and validated">Personas rurais mapeadas e validadas</li>
-                                <li data-pt="Stakeholders identificados e engajados" data-en="Stakeholders identified and engaged">Stakeholders identificados e engajados</li>
-                                <li data-pt="Papéis e responsabilidades definidos" data-en="Roles and responsibilities defined">Papéis e responsabilidades definidos</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category integration">
-                            <h4><span>📊</span><span data-pt="Métricas & Baselines" data-en="Metrics & Baselines">Métricas & Baselines</span></h4>
-                            <ul>
-                                <li data-pt="KPIs e métricas de sucesso definidos" data-en="KPIs and success metrics defined">KPIs e métricas de sucesso definidos</li>
-                                <li data-pt="Framework de monitoramento criado" data-en="Monitoring framework created">Framework de monitoramento criado</li>
-                                <li data-pt="Metodologia de avaliação de impacto" data-en="Impact assessment methodology">Metodologia de avaliação de impacto</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category documentation">
-                            <h4><span>📋</span><span data-pt="Planejamento & Ferramentas" data-en="Planning & Tools">Planejamento & Ferramentas</span></h4>
-                            <ul>
-                                <li data-pt="Backlog de épicos, funcionalidades e estórias criado no Taiga" data-en="Epics, features and user stories backlog created in Taiga">Backlog de épicos, funcionalidades e estórias criado no Taiga</li>
-                                <li data-pt="Roadmap detalhado dos releases" data-en="Detailed release roadmap">Roadmap detalhado dos releases</li>
-                                <li data-pt="Estratégia de comunicação estabelecida" data-en="Communication strategy established">Estratégia de comunicação estabelecida</li>
-                            </ul>
-                        </div>
                     </div>
                     
                     <div class="adoption-cycle">
@@ -638,10 +607,101 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="adoption-cycles">
-                    <!-- No adoption cycle for Release 0 -->
+                    <div class="deliverables-container">
+                        <div class="deliverable-category technical">
+                            <h4><span>🔧</span><span data-pt="Evolução da Plataforma" data-en="Platform Evolution">Evolução da Plataforma</span></h4>
+                            <ul>
+                                <li data-pt="Carteira Digital v2 com novos recursos" data-en="Digital Wallet v2 with new features">Carteira Digital v2 com novos recursos</li>
+                                <li data-pt="VCs CAR, CAF (agricultura familiar) e CAR 2 (Recibo CAR)" data-en="CAR, CAF (family farming) and CAR 2 (CAR Receipt) VCs">VCs CAR, CAF (agricultura familiar) e CAR 2 (Recibo CAR)</li>
+                                <li data-pt="Sistema de notificações inteligentes" data-en="Smart notification system">Sistema de notificações inteligentes</li>
+                                <li data-pt="Dashboard de monitoramento em tempo real" data-en="Real-time monitoring dashboard">Dashboard de monitoramento em tempo real</li>
+                                <li data-pt="Otimizações de performance" data-en="Performance optimizations">Otimizações de performance</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category integration">
+                            <h4><span>🔗</span><span data-pt="Integração Registros da Terra" data-en="Land Registry Integration">Integração Registros da Terra</span></h4>
+                            <ul>
+                                <li data-pt="Consolidação dados CAR 1 e 2, CCIR, CAF" data-en="Consolidation of CAR 1 and 2, CCIR, CAF data">Consolidação dados CAR 1 e 2, CCIR, CAF</li>
+                                <li data-pt="Integração completa bases INCRA" data-en="Complete INCRA database integration">Integração completa bases INCRA</li>
+                                <li data-pt="Sincronização em tempo real" data-en="Real-time synchronization">Sincronização em tempo real</li>
+                                <li data-pt="Validação cruzada de dados" data-en="Cross-data validation">Validação cruzada de dados</li>
+                                <li data-pt="APIs de verificação para banco parceiro" data-en="Verification APIs for partner bank">APIs de verificação para banco parceiro</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category governance">
+                            <h4><span>🏦</span><span data-pt="Funcionalidades Bancárias Mínimas" data-en="Minimum Banking Functionalities">Funcionalidades Bancárias Mínimas</span></h4>
+                            <ul>
+                                <li data-pt="APIs básicas de verificação de VCs" data-en="Basic VCs verification APIs">APIs básicas de verificação de VCs</li>
+                                <li data-pt="Integração inicial sistemas crédito rural" data-en="Initial rural credit systems integration">Integração inicial sistemas crédito rural</li>
+                                <li data-pt="Validação automática de credenciais" data-en="Automatic credential validation">Validação automática de credenciais</li>
+                                <li data-pt="Fluxo básico de análise de crédito" data-en="Basic credit analysis flow">Fluxo básico de análise de crédito</li>
+                                <li data-pt="Interface piloto para operadores bancários" data-en="Pilot interface for banking operators">Interface piloto para operadores bancários</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category documentation">
+                            <h4><span>📊</span><span data-pt="Expansão & Métricas" data-en="Expansion & Metrics">Expansão & Métricas</span></h4>
+                            <ul>
+                                <li data-pt="Plano de expansão para RS" data-en="Expansion plan for RS">Plano de expansão para RS</li>
+                                <li data-pt="Métricas de adoção DF analisadas" data-en="DF adoption metrics analyzed">Métricas de adoção DF analisadas</li>
+                                <li data-pt="Relatório de lições aprendidas" data-en="Lessons learned report">Relatório de lições aprendidas</li>
+                                <li data-pt="Ajustes baseados em feedback" data-en="Feedback-based adjustments">Ajustes baseados em feedback</li>
+                                <li data-pt="Primeira minuta instrumento de formalização MGI-Dataprev" data-en="First draft MGI-Dataprev formalization instrument">Primeira minuta instrumento de formalização MGI-Dataprev</li>
+                            </ul>
+                        </div>
+                    </div>
+                        <h4 data-pt="🎯 Ciclo de Adoção 1" data-en="🎯 Adoption Cycle 1">🎯 Ciclo de Adoção 1</h4>
+                        <div class="adoption-details">
+                            <div class="adoption-detail">
+                                <strong data-pt="Início:" data-en="Start:">Início:</strong>
+                                <span data-pt="27 de julho de 2025" data-en="July 27, 2025">27 de julho de 2025</span>
+                            </div>
+                            <div class="adoption-detail">
+                                <strong data-pt="Duração:" data-en="Duration:">Duração:</strong>
+                                <span data-pt="8 semanas" data-en="8 weeks">8 semanas</span>
+                            </div>
+                            <div class="adoption-detail">
+                                <strong data-pt="Local:" data-en="Location:">Local:</strong>
+                                <span data-pt="Distrito Federal" data-en="Federal District">Distrito Federal</span>
+                            </div>
+                            <div class="adoption-detail">
+                                <strong data-pt="Foco:" data-en="Focus:">Foco:</strong>
+                                <span data-pt="Uso real em produção" data-en="Real production usage">Uso real em produção</span>
+                            </div>
+                        </div>
+                    </div>
+                        
+                        <div class="deliverable-category governance">
+                            <h4><span>👥</span><span data-pt="Governança & Pessoas" data-en="Governance & People">Governança & Pessoas</span></h4>
+                            <ul>
+                                <li data-pt="Estrutura do Núcleo de Gestão estabelecida" data-en="Management Core structure established">Estrutura do Núcleo de Gestão estabelecida</li>
+                                <li data-pt="Pods Scrum organizados e operacionais" data-en="Scrum Pods organized and operational">Pods Scrum organizados e operacionais</li>
+                                <li data-pt="Personas rurais mapeadas e validadas" data-en="Rural personas mapped and validated">Personas rurais mapeadas e validadas</li>
+                                <li data-pt="Stakeholders identificados e engajados" data-en="Stakeholders identified and engaged">Stakeholders identificados e engajados</li>
+                                <li data-pt="Papéis e responsabilidades definidos" data-en="Roles and responsibilities defined">Papéis e responsabilidades definidos</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category integration">
+                            <h4><span>📊</span><span data-pt="Métricas & Baselines" data-en="Metrics & Baselines">Métricas & Baselines</span></h4>
+                            <ul>
+                                <li data-pt="KPIs e métricas de sucesso definidos" data-en="KPIs and success metrics defined">KPIs e métricas de sucesso definidos</li>
+                                <li data-pt="Framework de monitoramento criado" data-en="Monitoring framework created">Framework de monitoramento criado</li>
+                                <li data-pt="Metodologia de avaliação de impacto" data-en="Impact assessment methodology">Metodologia de avaliação de impacto</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category documentation">
+                            <h4><span>📋</span><span data-pt="Planejamento & Ferramentas" data-en="Planning & Tools">Planejamento & Ferramentas</span></h4>
+                            <ul>
+                                <li data-pt="Backlog de épicos, funcionalidades e estórias criado no Taiga" data-en="Epics, features and user stories backlog created in Taiga">Backlog de épicos, funcionalidades e estórias criado no Taiga</li>
+                                <li data-pt="Roadmap detalhado dos releases" data-en="Detailed release roadmap">Roadmap detalhado dos releases</li>
+                                <li data-pt="Estratégia de comunicação estabelecida" data-en="Communication strategy established">Estratégia de comunicação estabelecida</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -769,61 +829,63 @@
                 <div class="timeline-content">
                     <h3 class="timeline-title" data-pt="🌾 Release 2 - Expansão RS" data-en="🌾 Release 2 - RS Expansion">🌾 Release 2 - Expansão RS</h3>
                     <p class="timeline-date" data-pt="3 de agosto a 20 de setembro de 2025" data-en="August 3 - September 20, 2025">3 de agosto a 20 de setembro de 2025</p>
-                    <p class="timeline-description" data-pt="Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Introdução da segunda VC CAR (Recibo), VCs CAF (agricultura familiar) e validação de protótipos críticos." data-en="Evolution to Wallet v2 and expansion to Rio Grande do Sul with complete land registry integration. Introduction of second CAR VC (Receipt), CAF VCs (family farming) and critical prototype validation.">Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Introdução da segunda VC CAR (Recibo), VCs CAF (agricultura familiar) e validação de protótipos críticos.</p>
-                    
+                    <p class="timeline-description" data-pt="Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Introdução da segunda VC CAR (Recibo), VCs CAF (agricultura familiar) e validação de protótipos críticos. Devem ser entregues as funcionalidades bancárias mínimas para suporte às VCs." data-en="Evolution to Wallet v2 and expansion to Rio Grande do Sul with complete land registry integration. Introduction of second CAR VC (Receipt), CAF VCs (family farming) and critical prototype validation. Minimum banking functionalities for VCs support must be delivered.">Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Introdução da segunda VC CAR (Recibo), VCs CAF (agricultura familiar) e validação de protótipos críticos. Devem ser entregues as funcionalidades bancárias mínimas para suporte às VCs.</p>
                     <div class="deliverables-container">
                         <div class="deliverable-category technical">
-                            <h4><span>🔧</span><span data-pt="Evolução da Plataforma" data-en="Platform Evolution">Evolução da Plataforma</span></h4>
+                            <h4><span>🔧</span><span data-pt="Plataforma Final" data-en="Final Platform">Plataforma Final</span></h4>
                             <ul>
-                                <li data-pt="Carteira Digital v2 com novos recursos" data-en="Digital Wallet v2 with new features">Carteira Digital v2 com novos recursos</li>
-                                <li data-pt="VCs CAR, CAF (agricultura familiar) e CAR 2 (Recibo CAR)" data-en="CAR, CAF (family farming) and CAR 2 (CAR Receipt) VCs">VCs CAR, CAF (agricultura familiar) e CAR 2 (Recibo CAR)</li>
-                                <li data-pt="Sistema de notificações inteligentes" data-en="Smart notification system">Sistema de notificações inteligentes</li>
-                                <li data-pt="Dashboard de monitoramento em tempo real" data-en="Real-time monitoring dashboard">Dashboard de monitoramento em tempo real</li>
-                                <li data-pt="Otimizações de performance" data-en="Performance optimizations">Otimizações de performance</li>
+                                <li data-pt="Carteira Digital v3 completa" data-en="Complete Digital Wallet v3">Carteira Digital v3 completa</li>
+                                <li data-pt="Integrações ICP-Brasil em produção" data-en="ICP-Brasil integrations in production">Integrações ICP-Brasil em produção</li>
+                                <li data-pt="Integração MIR em produção" data-en="MIR integration in production">Integração MIR em produção</li>
+                                <li data-pt="Carteira virtual dentro do app MIR" data-en="Virtual wallet within MIR app">Carteira virtual dentro do app MIR</li>
+                                <li data-pt="VCs Seguro-Defeso implementados" data-en="Closed Season Insurance VCs implemented">VCs Seguro-Defeso implementados</li>
+                                <li data-pt="Outros documentos rurais digitalizados" data-en="Other digitized rural documents">Outros documentos rurais digitalizados</li>
                             </ul>
                         </div>
                         
                         <div class="deliverable-category integration">
-                            <h4><span>🔗</span><span data-pt="Integração Registros da Terra" data-en="Land Registry Integration">Integração Registros da Terra</span></h4>
+                            <h4><span>🌐</span><span data-pt="Operação Nacional" data-en="National Operation">Operação Nacional</span></h4>
                             <ul>
-                                <li data-pt="Consolidação dados CAR 1 e 2, CCIR, CAF" data-en="Consolidation of CAR 1 and 2, CCIR, CAF data">Consolidação dados CAR 1 e 2, CCIR, CAF</li>
-                                <li data-pt="Integração completa bases INCRA" data-en="Complete INCRA database integration">Integração completa bases INCRA</li>
-                                <li data-pt="Sincronização em tempo real" data-en="Real-time synchronization">Sincronização em tempo real</li>
-                                <li data-pt="Validação cruzada de dados" data-en="Cross-data validation">Validação cruzada de dados</li>
-                                <li data-pt="APIs de verificação para banco parceiro" data-en="Verification APIs for partner bank">APIs de verificação para banco parceiro</li>
+                                <li data-pt="VCs funcionando em escala nacional" data-en="VCs operating at national scale">VCs funcionando em escala nacional</li>
+                                <li data-pt="Todos os registros da terra integrados" data-en="All land registries integrated">Todos os registros da terra integrados</li>
+                                <li data-pt="Sistema de alta disponibilidade" data-en="High availability system">Sistema de alta disponibilidade</li>
+                                <li data-pt="Balanceamento de carga nacional" data-en="National load balancing">Balanceamento de carga nacional</li>
+                                <li data-pt="Monitoramento 24/7 operacional" data-en="24/7 operational monitoring">Monitoramento 24/7 operacional</li>
                             </ul>
                         </div>
                         
                         <div class="deliverable-category governance">
-                            <h4><span>📋</span><span data-pt="Protótipos & Validações" data-en="Prototypes & Validations">Protótipos & Validações</span></h4>
+                            <h4><span>🏦</span><span data-pt="Adaptações Banco Parceiro" data-en="Partner Bank Adaptations">Adaptações Banco Parceiro</span></h4>
                             <ul>
-                                <li data-pt="Protótipo ICP-Brasil validado/vetado" data-en="ICP-Brasil prototype validated/vetoed">Protótipo ICP-Brasil validado/vetado</li>
-                                <li data-pt="Protótipo MIR validado pelo DPI Office" data-en="MIR prototype validated by DPI Office">Protótipo MIR validado pelo DPI Office</li>
-                                <li data-pt="Primeira minuta instrumento de formalização MGI-Dataprev" data-en="First draft MGI-Dataprev formalization instrument">Primeira minuta instrumento de formalização MGI-Dataprev</li>
-                                <li data-pt="Revisão arquitetural estratégica" data-en="Strategic architectural review">Revisão arquitetural estratégica</li>
-                                <li data-pt="Processos crédito rural com VCs definidos" data-en="Rural credit processes with VCs defined">Processos crédito rural com VCs definidos</li>
+                                <li data-pt="Sistemas de análise de crédito adaptados para VCs" data-en="Credit analysis systems adapted for VCs">Sistemas de análise de crédito adaptados para VCs</li>
+                                <li data-pt="Fluxos de trabalho bancários otimizados" data-en="Optimized banking workflows">Fluxos de trabalho bancários otimizados</li>
+                                <li data-pt="Interfaces de usuário atualizadas" data-en="Updated user interfaces">Interfaces de usuário atualizadas</li>
+                                <li data-pt="Protocolos de compliance adaptados" data-en="Adapted compliance protocols">Protocolos de compliance adaptados</li>
+                                <li data-pt="Treinamento de equipes bancárias" data-en="Banking teams training">Treinamento de equipes bancárias</li>
+                                <li data-pt="SLAs banco parceiro para VCs definidos" data-en="Partner bank SLAs for VCs defined">SLAs banco parceiro para VCs definidos</li>
                             </ul>
                         </div>
                         
                         <div class="deliverable-category documentation">
-                            <h4><span>📊</span><span data-pt="Expansão & Métricas" data-en="Expansion & Metrics">Expansão & Métricas</span></h4>
+                            <h4><span>📈</span><span data-pt="Estratégia & Expansão" data-en="Strategy & Expansion">Estratégia & Expansão</span></h4>
                             <ul>
-                                <li data-pt="Plano de expansão para RS" data-en="Expansion plan for RS">Plano de expansão para RS</li>
-                                <li data-pt="Métricas de adoção DF analisadas" data-en="DF adoption metrics analyzed">Métricas de adoção DF analisadas</li>
-                                <li data-pt="Relatório de lições aprendidas" data-en="Lessons learned report">Relatório de lições aprendidas</li>
-                                <li data-pt="Ajustes baseados em feedback" data-en="Feedback-based adjustments">Ajustes baseados em feedback</li>
-                                <li data-pt="Plano de comunicação RS" data-en="RS communication plan">Plano de comunicação RS</li>
+                                <li data-pt="Estratégia de Expansão do Ecossistema" data-en="Ecosystem Expansion Strategy">Estratégia de Expansão do Ecossistema</li>
+                                <li data-pt="Roadmap Nacional de VCs aprovado" data-en="National VCs Roadmap approved">Roadmap Nacional de VCs aprovado</li>
+                                <li data-pt="Framework de novos verticais" data-en="New verticals framework">Framework de novos verticais</li>
+                                <li data-pt="Guia de implementação para estados" data-en="Implementation guide for states">Guia de implementação para estados</li>
+                                <li data-pt="Padrões de certificação estabelecidos" data-en="Certification standards established">Padrões de certificação estabelecidos</li>
+                                <li data-pt="Instrumento de formalização MGI-Dataprev assinado" data-en="MGI-Dataprev formalization instrument signed">Instrumento de formalização MGI-Dataprev assinado</li>
                             </ul>
                         </div>
                         
-                        <div class="deliverable-category governance">
-                            <h4><span>🏦</span><span data-pt="Sistemas Bancários" data-en="Banking Systems">Sistemas Bancários</span></h4>
+                        <div class="deliverable-category technical" style="border-left: 3px solid #10b981;">
+                            <h4><span>💡</span><span data-pt="Inovações Potenciais" data-en="Potential Innovations">Inovações Potenciais</span></h4>
                             <ul>
-                                <li data-pt="Adaptações nos sistemas de análise de crédito" data-en="Credit analysis systems adaptations">Adaptações nos sistemas de análise de crédito</li>
-                                <li data-pt="Integração APIs de verificação de VCs" data-en="VC verification APIs integration">Integração APIs de verificação de VCs</li>
-                                <li data-pt="Modificações nos fluxos de aprovação" data-en="Approval workflow modifications">Modificações nos fluxos de aprovação</li>
-                                <li data-pt="Atualizações em sistemas de compliance" data-en="Compliance systems updates">Atualizações em sistemas de compliance</li>
-                                <li data-pt="Treinamento de equipes bancárias" data-en="Banking teams training">Treinamento de equipes bancárias</li>
+                                <li data-pt="Integração com tecnologias emergentes" data-en="Integration with emerging technologies">Integração com tecnologias emergentes</li>
+                                <li data-pt="Novos modelos de verificação" data-en="New verification models">Novos modelos de verificação</li>
+                                <li data-pt="Expansão para outros setores" data-en="Expansion to other sectors">Expansão para outros setores</li>
+                                <li data-pt="Parcerias internacionais" data-en="International partnerships">Parcerias internacionais</li>
+                                <li data-pt="Aplicações em sustentabilidade" data-en="Sustainability applications">Aplicações em sustentabilidade</li>
                             </ul>
                         </div>
                     </div>
@@ -856,62 +918,7 @@
                     <p class="timeline-date" data-pt="28 de setembro a 22 de novembro de 2025" data-en="September 28 - November 22, 2025">28 de setembro a 22 de novembro de 2025</p>
                     <p class="timeline-description" data-pt="Nos quatro sprints finais as integrações ICP-Brasil e MIR entram em produção; a Carteira v3 lança a carteira virtual dentro do app MIR, inclui o Seguro-Defeso e outros documentos rurais. O instrumento de formalização MGI-Dataprev é assinado. A integração com registros públicos essenciais por meio de credenciais verificáveis agora funciona em escala nacional. Nesta fase o DPI Office começa sua preparação formal para tornar-se Dono pleno do Produto, ainda sob alinhamento com a Dataprev. É redigida e aprovada a Estratégia de Expansão do Ecossistema Nacional de VCs." data-en="In the final four sprints ICP-Brasil and MIR integrations go into production; Wallet v3 launches the virtual wallet within the MIR app, includes Closed Season Insurance and other rural documents. The MGI-Dataprev formalization instrument is signed. Integration with essential public records through verifiable credentials now works at national scale. In this phase the DPI Office begins its formal preparation to become full Product Owner, still under alignment with Dataprev. The National VC Ecosystem Expansion Strategy is drafted and approved.">Nos quatro sprints finais as integrações ICP-Brasil e MIR entram em produção; a Carteira v3 lança a carteira virtual dentro do app MIR, inclui o Seguro-Defeso e outros documentos rurais. O instrumento de formalização MGI-Dataprev é assinado. A integração com registros públicos essenciais por meio de credenciais verificáveis agora funciona em escala nacional. Nesta fase o DPI Office começa sua preparação formal para tornar-se Dono pleno do Produto, ainda sob alinhamento com a Dataprev. É redigida e aprovada a Estratégia de Expansão do Ecossistema Nacional de VCs.</p>
                     
-                    <div class="deliverables-container five-items">
-                        <div class="deliverable-category technical">
-                            <h4><span>🔧</span><span data-pt="Plataforma Final" data-en="Final Platform">Plataforma Final</span></h4>
-                            <ul>
-                                <li data-pt="Carteira Digital v3 completa" data-en="Complete Digital Wallet v3">Carteira Digital v3 completa</li>
-                                <li data-pt="Integrações ICP-Brasil em produção" data-en="ICP-Brasil integrations in production">Integrações ICP-Brasil em produção</li>
-                                <li data-pt="Integração MIR em produção" data-en="MIR integration in production">Integração MIR em produção</li>
-                                <li data-pt="Carteira virtual dentro do app MIR" data-en="Virtual wallet within MIR app">Carteira virtual dentro do app MIR</li>
-                                <li data-pt="VCs Seguro-Defeso implementados" data-en="Closed Season Insurance VCs implemented">VCs Seguro-Defeso implementados</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category integration">
-                            <h4><span>🌐</span><span data-pt="Operação Nacional" data-en="National Operation">Operação Nacional</span></h4>
-                            <ul>
-                                <li data-pt="VCs funcionando em escala nacional" data-en="VCs operating at national scale">VCs funcionando em escala nacional</li>
-                                <li data-pt="Integração completa sistemas banco parceiro" data-en="Complete partner bank systems integration">Integração completa sistemas banco parceiro</li>
-                                <li data-pt="APIs crédito rural com VCs em produção" data-en="Rural credit APIs with VCs in production">APIs crédito rural com VCs em produção</li>
-                                <li data-pt="Sistema de alta disponibilidade" data-en="High availability system">Sistema de alta disponibilidade</li>
-                                <li data-pt="Monitoramento 24/7 operacional" data-en="24/7 operational monitoring">Monitoramento 24/7 operacional</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category governance">
-                            <h4><span>📋</span><span data-pt="Transição & Contratos" data-en="Transition & Contracts">Transição & Contratos</span></h4>
-                            <ul>
-                                <li data-pt="Instrumento de formalização MGI-Dataprev assinado" data-en="MGI-Dataprev formalization instrument signed">Instrumento de formalização MGI-Dataprev assinado</li>
-                                <li data-pt="DPI Office preparação como Product Owner" data-en="DPI Office preparation as Product Owner">DPI Office preparação como Product Owner</li>
-                                <li data-pt="Transferência gradual de responsabilidades" data-en="Gradual transfer of responsibilities">Transferência gradual de responsabilidades</li>
-                                <li data-pt="SLAs banco parceiro para VCs definidos" data-en="Partner bank SLAs for VCs defined">SLAs banco parceiro para VCs definidos</li>
-                                <li data-pt="Planos de continuidade aprovados" data-en="Continuity plans approved">Planos de continuidade aprovados</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category documentation">
-                            <h4><span>📈</span><span data-pt="Estratégia & Expansão" data-en="Strategy & Expansion">Estratégia & Expansão</span></h4>
-                            <ul>
-                                <li data-pt="Estratégia de Expansão do Ecossistema" data-en="Ecosystem Expansion Strategy">Estratégia de Expansão do Ecossistema</li>
-                                <li data-pt="Roadmap Nacional de VCs aprovado" data-en="National VCs Roadmap approved">Roadmap Nacional de VCs aprovado</li>
-                                <li data-pt="Framework de novos verticais" data-en="New verticals framework">Framework de novos verticais</li>
-                                <li data-pt="Guia de implementação para estados" data-en="Implementation guide for states">Guia de implementação para estados</li>
-                                <li data-pt="Padrões de certificação estabelecidos" data-en="Certification standards established">Padrões de certificação estabelecidos</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category technical">
-                            <h4><span>💡</span><span data-pt="Inovações Futuras" data-en="Future Innovations">Inovações Futuras</span></h4>
-                            <ul>
-                                <li data-pt="Exploração de tecnologias emergentes" data-en="Exploration of emerging technologies">Exploração de tecnologias emergentes</li>
-                                <li data-pt="Prototipagem de novas funcionalidades" data-en="New features prototyping">Prototipagem de novas funcionalidades</li>
-                                <li data-pt="Estudos de casos de uso avançados" data-en="Advanced use cases studies">Estudos de casos de uso avançados</li>
-                                <li data-pt="Análise de tendências internacionais" data-en="International trends analysis">Análise de tendências internacionais</li>
-                                <li data-pt="Roadmap de inovação tecnológica" data-en="Technology innovation roadmap">Roadmap de inovação tecnológica</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div class="adoption-cycle">
                         <h4 data-pt="🎯 Ciclo de Adoção 3" data-en="🎯 Adoption Cycle 3">🎯 Ciclo de Adoção 3</h4>
                         <div class="adoption-details">
                             <div class="adoption-detail">
@@ -960,10 +967,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="adoption-cycles">
-                    <!-- No adoption cycle for International Events -->
-                </div>
             </div>
 
             <div class="timeline-item closure">
@@ -971,10 +974,6 @@
                     <h3 class="timeline-title" data-pt="🏆 Encerramento" data-en="🏆 Closure">🏆 Encerramento</h3>
                     <p class="timeline-date" data-pt="Dezembro de 2025" data-en="December 2025">Dezembro de 2025</p>
                     <p class="timeline-description" data-pt="Conclusão oficial do programa com homologação do Relatório de Impacto 1.0 e transferência completa das responsabilidades para operação contínua. Com o Relatório de Impacto 1.0 homologado na Sprint Review final, o programa é declarado concluído e o comitê de gestão do programa é desativado." data-en="Official program completion with Impact Report 1.0 approval and complete transfer of responsibilities for continuous operation. With Impact Report 1.0 approved in the final Sprint Review, the program is declared completed and the program management committee is deactivated.">Conclusão oficial do programa com homologação do Relatório de Impacto 1.0 e transferência completa das responsabilidades para operação contínua. Com o Relatório de Impacto 1.0 homologado na Sprint Review final, o programa é declarado concluído e o comitê de gestão do programa é desativado.</p>
-                </div>
-                
-                <div class="adoption-cycles">
-                    <!-- No adoption cycle for Closure -->
                 </div>
             </div>
         </div>
