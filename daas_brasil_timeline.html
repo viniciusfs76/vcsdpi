@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Programa DaaS Brasil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 60px 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3498db, #2ecc71, #f39c12, #e74c3c);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -30px;
+            border-left-color: white;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -30px;
+            border-right-color: white;
+        }
+
+        .release-0 { border-left: 5px solid #3498db; }
+        .release-1 { border-left: 5px solid #2ecc71; }
+        .release-2 { border-left: 5px solid #f39c12; }
+        .release-3 { border-left: 5px solid #e74c3c; }
+        .events { border-left: 5px solid #9b59b6; }
+        .closure { border-left: 5px solid #34495e; }
+
+        .release-0::before { border-color: #3498db; }
+        .release-1::before { border-color: #2ecc71; }
+        .release-2::before { border-color: #f39c12; }
+        .release-3::before { border-color: #e74c3c; }
+        .events::before { border-color: #9b59b6; }
+        .closure::before { border-color: #34495e; }
+
+        .timeline-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .timeline-date {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .timeline-description {
+            line-height: 1.6;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+
+        .deliverables {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .deliverables h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .deliverables ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .deliverables li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .deliverables li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .adoption-cycle {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 2px solid #e17055;
+        }
+
+        .adoption-cycle h4 {
+            color: #d63031;
+            margin-bottom: 10px;
+        }
+
+        .international-events {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .international-events h4 {
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .legend {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .legend h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .legend-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+
+            .timeline-item::before {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+
+            .timeline-content::before {
+                left: -30px !important;
+                border-right-color: white !important;
+                border-left-color: transparent !important;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .timeline {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Programa DaaS Brasil</h1>
+            <p>Crédito Rural com Credenciais Verificáveis — Infraestrutura Pública Digital 2025</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item release-0">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">🏁 Release 0 - Fundação</h3>
+                    <p class="timeline-date">10 a 31 de maio de 2025</p>
+                    <p class="timeline-description">Sprint único de três semanas reúne todo o time do programa com foco exclusivamente fundacional.</p>
+                    <div class="deliverables">
+                        <h4>Deliverables:</h4>
+                        <ul>
+                            <li>Visão de produto concluída</li>
+                            <li>MVP definido</li>
+                            <li>Personas rurais mapeadas</li>
+                            <li>Linha-base de impacto no DF</li>
+                            <li>Backlog épico criado no Taiga</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item release-1">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">🚀 Release 1 - Produção DF</h3>
+                    <p class="timeline-date">8 de junho a 26 de julho de 2025</p>
+                    <p class="timeline-description">Quatro sprints paralelos colocam a plataforma de VCs em produção no Distrito Federal.</p>
+                    <div class="deliverables">
+                        <h4>Deliverables:</h4>
+                        <ul>
+                            <li>VCs CAR e CCIR em produção</li>
+                            <li>Carteira v1 lançada</li>
+                            <li>Integração plena ao ID Gov.br</li>
+                            <li>ACT MGI-Banco do Brasil assinado</li>
+                        </ul>
+                    </div>
+                    <div class="adoption-cycle">
+                        <h4>🎯 Ciclo de Adoção 1</h4>
+                        <p>Início: 27 de julho • Duração: 8 semanas • Local: Distrito Federal</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item release-2">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">🌾 Release 2 - Expansão RS</h3>
+                    <p class="timeline-date">3 de agosto a 20 de setembro de 2025</p>
+                    <p class="timeline-description">Carteira v2 e integração com registros da terra no piloto do Rio Grande do Sul.</p>
+                    <div class="deliverables">
+                        <h4>Deliverables:</h4>
+                        <ul>
+                            <li>Carteira v2 com VCs CA e Recibo CAR</li>
+                            <li>Protótipos ICP-Brasil e MIR validados</li>
+                            <li>Primeira minuta contrato MGI-Dataprev</li>
+                            <li>Integração registros INCRA consolidada</li>
+                        </ul>
+                    </div>
+                    <div class="adoption-cycle">
+                        <h4>🎯 Ciclo de Adoção 2</h4>
+                        <p>21 de setembro a 15 de novembro • Local: Rio Grande do Sul • Resultado: Relatório 0.3</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item release-3">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">🌍 Release 3 - Escala Nacional</h3>
+                    <p class="timeline-date">28 de setembro a 22 de novembro de 2025</p>
+                    <p class="timeline-description">Integrações finais e operação nacional com preparação para transferência ao DPI Office.</p>
+                    <div class="deliverables">
+                        <h4>Deliverables:</h4>
+                        <ul>
+                            <li>Integrações ICP-Brasil e MIR em produção</li>
+                            <li>Carteira v3 com app MIR integrado</li>
+                            <li>Contrato MGI-Dataprev assinado</li>
+                            <li>VCs funcionando em escala nacional</li>
+                            <li>Estratégia de Expansão aprovada</li>
+                        </ul>
+                    </div>
+                    <div class="adoption-cycle">
+                        <h4>🎯 Ciclo de Adoção 3</h4>
+                        <p>23 de novembro a dezembro • Nacional (RS + piloto Belém) • Resultado: Relatório 1.0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item events">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">🌐 Eventos Internacionais</h3>
+                    <p class="timeline-date">Novembro de 2025</p>
+                    <p class="timeline-description">Participação em eventos estratégicos para apresentação dos resultados e networking internacional.</p>
+                    <div class="international-events">
+                        <h4>🗓️ Agenda Internacional</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>🇿🇦 4-6 nov: Global DPI Summit - Cidade do Cabo</li>
+                            <li>🇮🇳 7-11 nov: Treinamentos MOSIP/INJI - Bengaluru</li>
+                            <li>🇧🇷 10-21 nov: COP 30 - Belém</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item closure">
+                <div class="timeline-content">
+                    <h3 class="timeline-title">🏆 Encerramento</h3>
+                    <p class="timeline-date">Dezembro de 2025</p>
+                    <p class="timeline-description">Homologação do Relatório de Impacto 1.0 e transferência completa das responsabilidades.</p>
+                    <div class="deliverables">
+                        <h4>Transição:</h4>
+                        <ul>
+                            <li>Programa declarado concluído</li>
+                            <li>Steering Committee desativado</li>
+                            <li>IPD operando sob contrato MGI-Dataprev</li>
+                            <li>DPI Office assume backlog de Produto</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>Legenda das Fases</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3498db;"></div>
+                    <span>Release 0 - Fundação</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #2ecc71;"></div>
+                    <span>Release 1 - Produção DF</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f39c12;"></div>
+                    <span>Release 2 - Expansão RS</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e74c3c;"></div>
+                    <span>Release 3 - Escala Nacional</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #9b59b6;"></div>
+                    <span>Eventos Internacionais</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #34495e;"></div>
+                    <span>Encerramento</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
