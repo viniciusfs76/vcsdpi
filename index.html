@@ -277,6 +277,10 @@
             margin-top: 1.5rem;
         }
 
+        .deliverables-container.five-items {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
         .deliverable-category {
             background: var(--surface-tertiary);
             padding: 1.5rem;
@@ -447,7 +451,8 @@
         }
 
         @media (max-width: 1200px) {
-            .deliverables-container {
+            .deliverables-container,
+            .deliverables-container.five-items {
                 grid-template-columns: 1fr;
             }
         }
@@ -544,7 +549,7 @@
                     <p class="timeline-date" data-pt="10 a 31 de maio de 2025" data-en="May 10-31, 2025">10 a 31 de maio de 2025</p>
                     <p class="timeline-description" data-pt="Sprint único de três semanas reúne todo o time do programa com foco exclusivamente fundacional. Estabelece as bases técnicas e estratégicas para toda a implementação." data-en="Single three-week sprint brings together the entire program team with exclusively foundational focus. Establishes technical and strategic foundations for the entire implementation.">Sprint único de três semanas reúne todo o time do programa com foco exclusivamente fundacional. Estabelece as bases técnicas e estratégicas para toda a implementação.</p>
                     
-                    <div class="deliverables-container">
+                    <div class="deliverables-container five-items">
                         <div class="deliverable-category technical">
                             <h4><span>🔧</span><span data-pt="Produto & Arquitetura" data-en="Product & Architecture">Produto & Arquitetura</span></h4>
                             <ul>
@@ -583,6 +588,50 @@
                                 <li data-pt="Roadmap detalhado dos releases" data-en="Detailed release roadmap">Roadmap detalhado dos releases</li>
                                 <li data-pt="Estratégia de comunicação estabelecida" data-en="Communication strategy established">Estratégia de comunicação estabelecida</li>
                             </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="adoption-cycle">
+                        <h4 data-pt="🎯 Ciclo de Adoção 3" data-en="🎯 Adoption Cycle 3">🎯 Ciclo de Adoção 3</h4>
+                        <div class="adoption-details">
+                            <div class="adoption-detail">
+                                <strong data-pt="Início:" data-en="Start:">Início:</strong>
+                                <span data-pt="23 de novembro de 2025" data-en="November 23, 2025">23 de novembro de 2025</span>
+                            </div>
+                            <div class="adoption-detail">
+                                <strong data-pt="Término:" data-en="End:">Término:</strong>
+                                <span data-pt="Dezembro de 2025" data-en="December 2025">Dezembro de 2025</span>
+                            </div>
+                            <div class="adoption-detail">
+                                <strong data-pt="Escopo:" data-en="Scope:">Escopo:</strong>
+                                <span data-pt="Nacional (RS + piloto Belém)" data-en="National (RS + Belém pilot)">Nacional (RS + piloto Belém)</span>
+                            </div>
+                            <div class="adoption-detail">
+                                <strong data-pt="Resultado:" data-en="Result:">Resultado:</strong>
+                                <span data-pt="Relatório de Impacto 1.0" data-en="Impact Report 1.0">Relatório de Impacto 1.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="adoption-cycle">
+                        <h4 data-pt="🎯 Ciclo de Adoção 2" data-en="🎯 Adoption Cycle 2">🎯 Ciclo de Adoção 2</h4>
+                        <div class="adoption-details">
+                            <div class="adoption-detail">
+                                <strong data-pt="Início:" data-en="Start:">Início:</strong>
+                                <span data-pt="21 de setembro de 2025" data-en="September 21, 2025">21 de setembro de 2025</span>
+                            </div>
+                            <div class="adoption-detail">
+                                <strong data-pt="Término:" data-en="End:">Término:</strong>
+                                <span data-pt="15 de novembro de 2025" data-en="November 15, 2025">15 de novembro de 2025</span>
+                            </div>
+                            <div class="adoption-detail">
+                                <strong data-pt="Local:" data-en="Location:">Local:</strong>
+                                <span data-pt="Rio Grande do Sul" data-en="Rio Grande do Sul">Rio Grande do Sul</span>
+                            </div>
+                            <div class="adoption-detail">
+                                <strong data-pt="Resultado:" data-en="Result:">Resultado:</strong>
+                                <span data-pt="Relatório 0.3" data-en="Report 0.3">Relatório 0.3</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -714,7 +763,62 @@
                     <p class="timeline-date" data-pt="3 de agosto a 20 de setembro de 2025" data-en="August 3 - September 20, 2025">3 de agosto a 20 de setembro de 2025</p>
                     <p class="timeline-description" data-pt="Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Introdução da segunda VC CAR (Recibo), VCs CAF (agricultura familiar) e validação de protótipos críticos." data-en="Evolution to Wallet v2 and expansion to Rio Grande do Sul with complete land registry integration. Introduction of second CAR VC (Receipt), CAF VCs (family farming) and critical prototype validation.">Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Introdução da segunda VC CAR (Recibo), VCs CAF (agricultura familiar) e validação de protótipos críticos.</p>
                     
-                    <div class="adoption-cycle">
+                    <div class="deliverables-container">
+                        <div class="deliverable-category technical">
+                            <h4><span>🔧</span><span data-pt="Evolução da Plataforma" data-en="Platform Evolution">Evolução da Plataforma</span></h4>
+                            <ul>
+                                <li data-pt="Carteira Digital v2 com novos recursos" data-en="Digital Wallet v2 with new features">Carteira Digital v2 com novos recursos</li>
+                                <li data-pt="VCs CAR, CAF (agricultura familiar) e CAR 2 (Recibo CAR)" data-en="CAR, CAF (family farming) and CAR 2 (CAR Receipt) VCs">VCs CAR, CAF (agricultura familiar) e CAR 2 (Recibo CAR)</li>
+                                <li data-pt="Sistema de notificações inteligentes" data-en="Smart notification system">Sistema de notificações inteligentes</li>
+                                <li data-pt="Dashboard de monitoramento em tempo real" data-en="Real-time monitoring dashboard">Dashboard de monitoramento em tempo real</li>
+                                <li data-pt="Otimizações de performance" data-en="Performance optimizations">Otimizações de performance</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category integration">
+                            <h4><span>🔗</span><span data-pt="Integração Registros da Terra" data-en="Land Registry Integration">Integração Registros da Terra</span></h4>
+                            <ul>
+                                <li data-pt="Consolidação dados CAR 1 e 2, CCIR, CAF" data-en="Consolidation of CAR 1 and 2, CCIR, CAF data">Consolidação dados CAR 1 e 2, CCIR, CAF</li>
+                                <li data-pt="Integração completa bases INCRA" data-en="Complete INCRA database integration">Integração completa bases INCRA</li>
+                                <li data-pt="Sincronização em tempo real" data-en="Real-time synchronization">Sincronização em tempo real</li>
+                                <li data-pt="Validação cruzada de dados" data-en="Cross-data validation">Validação cruzada de dados</li>
+                                <li data-pt="APIs de verificação para banco parceiro" data-en="Verification APIs for partner bank">APIs de verificação para banco parceiro</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category governance">
+                            <h4><span>📋</span><span data-pt="Protótipos & Validações" data-en="Prototypes & Validations">Protótipos & Validações</span></h4>
+                            <ul>
+                                <li data-pt="Protótipo ICP-Brasil validado/vetado" data-en="ICP-Brasil prototype validated/vetoed">Protótipo ICP-Brasil validado/vetado</li>
+                                <li data-pt="Protótipo MIR validado pelo DPI Office" data-en="MIR prototype validated by DPI Office">Protótipo MIR validado pelo DPI Office</li>
+                                <li data-pt="Primeira minuta instrumento de formalização MGI-Dataprev" data-en="First draft MGI-Dataprev formalization instrument">Primeira minuta instrumento de formalização MGI-Dataprev</li>
+                                <li data-pt="Revisão arquitetural estratégica" data-en="Strategic architectural review">Revisão arquitetural estratégica</li>
+                                <li data-pt="Processos crédito rural com VCs definidos" data-en="Rural credit processes with VCs defined">Processos crédito rural com VCs definidos</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category documentation">
+                            <h4><span>📊</span><span data-pt="Expansão & Métricas" data-en="Expansion & Metrics">Expansão & Métricas</span></h4>
+                            <ul>
+                                <li data-pt="Plano de expansão para RS" data-en="Expansion plan for RS">Plano de expansão para RS</li>
+                                <li data-pt="Métricas de adoção DF analisadas" data-en="DF adoption metrics analyzed">Métricas de adoção DF analisadas</li>
+                                <li data-pt="Relatório de lições aprendidas" data-en="Lessons learned report">Relatório de lições aprendidas</li>
+                                <li data-pt="Ajustes baseados em feedback" data-en="Feedback-based adjustments">Ajustes baseados em feedback</li>
+                                <li data-pt="Plano de comunicação RS" data-en="RS communication plan">Plano de comunicação RS</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category governance">
+                            <h4><span>🏦</span><span data-pt="Sistemas Bancários" data-en="Banking Systems">Sistemas Bancários</span></h4>
+                            <ul>
+                                <li data-pt="Adaptações nos sistemas de análise de crédito" data-en="Credit analysis systems adaptations">Adaptações nos sistemas de análise de crédito</li>
+                                <li data-pt="Integração APIs de verificação de VCs" data-en="VC verification APIs integration">Integração APIs de verificação de VCs</li>
+                                <li data-pt="Modificações nos fluxos de aprovação" data-en="Approval workflow modifications">Modificações nos fluxos de aprovação</li>
+                                <li data-pt="Atualizações em sistemas de compliance" data-en="Compliance systems updates">Atualizações em sistemas de compliance</li>
+                                <li data-pt="Treinamento de equipes bancárias" data-en="Banking teams training">Treinamento de equipes bancárias</li>
+                            </ul>
+                        </div>
+                    </div>
                         <h4 data-pt="🎯 Ciclo de Adoção 2" data-en="🎯 Adoption Cycle 2">🎯 Ciclo de Adoção 2</h4>
                         <div class="adoption-details">
                             <div class="adoption-detail">
@@ -744,7 +848,62 @@
                     <p class="timeline-date" data-pt="28 de setembro a 22 de novembro de 2025" data-en="September 28 - November 22, 2025">28 de setembro a 22 de novembro de 2025</p>
                     <p class="timeline-description" data-pt="Nos quatro sprints finais as integrações ICP-Brasil e MIR entram em produção; a Carteira v3 lança a carteira virtual dentro do app MIR, inclui o Seguro-Defeso e outros documentos rurais. O instrumento de formalização MGI-Dataprev é assinado. A integração com registros públicos essenciais por meio de credenciais verificáveis agora funciona em escala nacional. Nesta fase o DPI Office começa sua preparação formal para tornar-se Dono pleno do Produto, ainda sob alinhamento com a Dataprev. É redigida e aprovada a Estratégia de Expansão do Ecossistema Nacional de VCs." data-en="In the final four sprints ICP-Brasil and MIR integrations go into production; Wallet v3 launches the virtual wallet within the MIR app, includes Closed Season Insurance and other rural documents. The MGI-Dataprev formalization instrument is signed. Integration with essential public records through verifiable credentials now works at national scale. In this phase the DPI Office begins its formal preparation to become full Product Owner, still under alignment with Dataprev. The National VC Ecosystem Expansion Strategy is drafted and approved.">Nos quatro sprints finais as integrações ICP-Brasil e MIR entram em produção; a Carteira v3 lança a carteira virtual dentro do app MIR, inclui o Seguro-Defeso e outros documentos rurais. O instrumento de formalização MGI-Dataprev é assinado. A integração com registros públicos essenciais por meio de credenciais verificáveis agora funciona em escala nacional. Nesta fase o DPI Office começa sua preparação formal para tornar-se Dono pleno do Produto, ainda sob alinhamento com a Dataprev. É redigida e aprovada a Estratégia de Expansão do Ecossistema Nacional de VCs.</p>
                     
-                    <div class="adoption-cycle">
+                    <div class="deliverables-container five-items">
+                        <div class="deliverable-category technical">
+                            <h4><span>🔧</span><span data-pt="Plataforma Final" data-en="Final Platform">Plataforma Final</span></h4>
+                            <ul>
+                                <li data-pt="Carteira Digital v3 completa" data-en="Complete Digital Wallet v3">Carteira Digital v3 completa</li>
+                                <li data-pt="Integrações ICP-Brasil em produção" data-en="ICP-Brasil integrations in production">Integrações ICP-Brasil em produção</li>
+                                <li data-pt="Integração MIR em produção" data-en="MIR integration in production">Integração MIR em produção</li>
+                                <li data-pt="Carteira virtual dentro do app MIR" data-en="Virtual wallet within MIR app">Carteira virtual dentro do app MIR</li>
+                                <li data-pt="VCs Seguro-Defeso implementados" data-en="Closed Season Insurance VCs implemented">VCs Seguro-Defeso implementados</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category integration">
+                            <h4><span>🌐</span><span data-pt="Operação Nacional" data-en="National Operation">Operação Nacional</span></h4>
+                            <ul>
+                                <li data-pt="VCs funcionando em escala nacional" data-en="VCs operating at national scale">VCs funcionando em escala nacional</li>
+                                <li data-pt="Integração completa sistemas banco parceiro" data-en="Complete partner bank systems integration">Integração completa sistemas banco parceiro</li>
+                                <li data-pt="APIs crédito rural com VCs em produção" data-en="Rural credit APIs with VCs in production">APIs crédito rural com VCs em produção</li>
+                                <li data-pt="Sistema de alta disponibilidade" data-en="High availability system">Sistema de alta disponibilidade</li>
+                                <li data-pt="Monitoramento 24/7 operacional" data-en="24/7 operational monitoring">Monitoramento 24/7 operacional</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category governance">
+                            <h4><span>📋</span><span data-pt="Transição & Contratos" data-en="Transition & Contracts">Transição & Contratos</span></h4>
+                            <ul>
+                                <li data-pt="Instrumento de formalização MGI-Dataprev assinado" data-en="MGI-Dataprev formalization instrument signed">Instrumento de formalização MGI-Dataprev assinado</li>
+                                <li data-pt="DPI Office preparação como Product Owner" data-en="DPI Office preparation as Product Owner">DPI Office preparação como Product Owner</li>
+                                <li data-pt="Transferência gradual de responsabilidades" data-en="Gradual transfer of responsibilities">Transferência gradual de responsabilidades</li>
+                                <li data-pt="SLAs banco parceiro para VCs definidos" data-en="Partner bank SLAs for VCs defined">SLAs banco parceiro para VCs definidos</li>
+                                <li data-pt="Planos de continuidade aprovados" data-en="Continuity plans approved">Planos de continuidade aprovados</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category documentation">
+                            <h4><span>📈</span><span data-pt="Estratégia & Expansão" data-en="Strategy & Expansion">Estratégia & Expansão</span></h4>
+                            <ul>
+                                <li data-pt="Estratégia de Expansão do Ecossistema" data-en="Ecosystem Expansion Strategy">Estratégia de Expansão do Ecossistema</li>
+                                <li data-pt="Roadmap Nacional de VCs aprovado" data-en="National VCs Roadmap approved">Roadmap Nacional de VCs aprovado</li>
+                                <li data-pt="Framework de novos verticais" data-en="New verticals framework">Framework de novos verticais</li>
+                                <li data-pt="Guia de implementação para estados" data-en="Implementation guide for states">Guia de implementação para estados</li>
+                                <li data-pt="Padrões de certificação estabelecidos" data-en="Certification standards established">Padrões de certificação estabelecidos</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="deliverable-category technical">
+                            <h4><span>💡</span><span data-pt="Inovações Futuras" data-en="Future Innovations">Inovações Futuras</span></h4>
+                            <ul>
+                                <li data-pt="Exploração de tecnologias emergentes" data-en="Exploration of emerging technologies">Exploração de tecnologias emergentes</li>
+                                <li data-pt="Prototipagem de novas funcionalidades" data-en="New features prototyping">Prototipagem de novas funcionalidades</li>
+                                <li data-pt="Estudos de casos de uso avançados" data-en="Advanced use cases studies">Estudos de casos de uso avançados</li>
+                                <li data-pt="Análise de tendências internacionais" data-en="International trends analysis">Análise de tendências internacionais</li>
+                                <li data-pt="Roadmap de inovação tecnológica" data-en="Technology innovation roadmap">Roadmap de inovação tecnológica</li>
+                            </ul>
+                        </div>
+                    </div>
                         <h4 data-pt="🎯 Ciclo de Adoção 3" data-en="🎯 Adoption Cycle 3">🎯 Ciclo de Adoção 3</h4>
                         <div class="adoption-details">
                             <div class="adoption-detail">
@@ -868,4 +1027,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
