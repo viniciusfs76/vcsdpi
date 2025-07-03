@@ -146,7 +146,7 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 50%;
+            left: 35%;
             width: 3px;
             height: 100%;
             background: linear-gradient(to bottom, 
@@ -166,6 +166,10 @@
             margin: 3rem 0;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: 2rem;
+            align-items: start;
         }
 
         .timeline-item:nth-child(1) { animation-delay: 0.1s; }
@@ -179,7 +183,7 @@
             content: '';
             position: absolute;
             top: 1.5rem;
-            left: 50%;
+            left: 35%;
             width: 1rem;
             height: 1rem;
             background: var(--surface-primary);
@@ -191,7 +195,7 @@
         }
 
         .timeline-content {
-            width: 48%;
+            width: 100%;
             padding: 2rem;
             background: var(--surface-primary);
             border-radius: var(--radius-xl);
@@ -206,31 +210,21 @@
             box-shadow: var(--shadow-xl);
         }
 
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 52%;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-left: 0;
-        }
-
         .timeline-content::before {
             content: '';
             position: absolute;
             top: 2rem;
+            right: -0.75rem;
             width: 0;
             height: 0;
             border: 0.75rem solid transparent;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -1.5rem;
             border-left-color: var(--surface-primary);
         }
 
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -1.5rem;
-            border-right-color: var(--surface-primary);
+        .adoption-cycles {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .release-0 { border-left: 4px solid var(--accent-blue); }
@@ -480,9 +474,19 @@
                 padding: 3rem 1rem;
             }
 
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
             .timeline-content {
                 width: calc(100% - 4rem);
-                margin-left: 4rem !important;
+                margin-left: 4rem;
+            }
+
+            .adoption-cycles {
+                margin-left: 4rem;
+                width: calc(100% - 4rem);
             }
 
             .timeline-item::before {
@@ -491,9 +495,9 @@
             }
 
             .timeline-content::before {
-                left: -1.5rem !important;
-                border-right-color: var(--surface-primary) !important;
-                border-left-color: transparent !important;
+                left: -0.75rem;
+                border-right-color: var(--surface-primary);
+                border-left-color: transparent;
             }
 
             .adoption-details {
@@ -634,6 +638,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="adoption-cycles">
+                    <!-- No adoption cycle for Release 0 -->
                 </div>
             </div>
 
@@ -952,6 +960,10 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="adoption-cycles">
+                    <!-- No adoption cycle for International Events -->
+                </div>
             </div>
 
             <div class="timeline-item closure">
@@ -959,6 +971,10 @@
                     <h3 class="timeline-title" data-pt="🏆 Encerramento" data-en="🏆 Closure">🏆 Encerramento</h3>
                     <p class="timeline-date" data-pt="Dezembro de 2025" data-en="December 2025">Dezembro de 2025</p>
                     <p class="timeline-description" data-pt="Conclusão oficial do programa com homologação do Relatório de Impacto 1.0 e transferência completa das responsabilidades para operação contínua. Com o Relatório de Impacto 1.0 homologado na Sprint Review final, o programa é declarado concluído e o comitê de gestão do programa é desativado." data-en="Official program completion with Impact Report 1.0 approval and complete transfer of responsibilities for continuous operation. With Impact Report 1.0 approved in the final Sprint Review, the program is declared completed and the program management committee is deactivated.">Conclusão oficial do programa com homologação do Relatório de Impacto 1.0 e transferência completa das responsabilidades para operação contínua. Com o Relatório de Impacto 1.0 homologado na Sprint Review final, o programa é declarado concluído e o comitê de gestão do programa é desativado.</p>
+                </div>
+                
+                <div class="adoption-cycles">
+                    <!-- No adoption cycle for Closure -->
                 </div>
             </div>
         </div>
